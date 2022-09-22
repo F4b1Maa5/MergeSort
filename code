@@ -1,0 +1,34 @@
+def mergeSort(array):
+    if len(array) > 1:
+        mittelpunkt = len(array) // 2        
+        linkesArray = array[:mittelpunkt]
+        rechtesArray = array[mittelpunkt:]
+        mergeSort(linkesArray)
+        mergeSort(rechtesArray)        
+        o = 0
+        p = 0        
+        for i in range(len(array)):
+            if o < len(linkesArray) and p < len(rechtesArray):
+                if linkesArray[o] < rechtesArray[p]:
+                    array[i] = linkesArray[o]
+                    o = o+1
+                else:
+                    array[i] = rechtesArray[p]
+                    p = p+1
+            elif o < len(linkesArray):
+                array[i] = linkesArray[o]
+                o = o + 1
+            else:
+                array[i] = rechtesArray[p]
+                p = p + 1
+                
+def __main__():
+    array = [9, 5, 40, 2, 10, 15, 8, 99, 1]
+    print("Das eingegeben Array sieht wie folgt aus:")
+    print(array)
+    mergeSort(array)
+    print()
+    print("Das sortierte Array sieht wie folgt aus:")
+    print(array)
+
+__main__()
